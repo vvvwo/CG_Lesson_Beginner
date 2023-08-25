@@ -17,7 +17,7 @@ Shenzhen University, with assistance from [VCCLab](https://vcc.tech/index.html) 
 
 根据计算机图形学初级课程的要求，以上机实验为主，课程内容包括：
 
- 1. [OpenGL环境配置](https://github.com/vvvwo/CG_Lession/Lession1)
+ 1. [OpenGL环境配置](https://github.com/vvvwo/CG_Lession/Lession1/)
  2. [Shader编程入门](https://github.com/vvvwo/CG_Lession/Lession2)
  3. [键盘与鼠标交互](https://github.com/vvvwo/CG_Lession/Lession3)
  4. [三维模型读取与显示](https://github.com/vvvwo/CG_Lession/Lession4)
