@@ -1,4 +1,4 @@
-# CG_Lession/计算机图形学初级课程
+# 计算机图形学初级课程
 
 This is a computer graphics course for entry-level learner. Course designed by [Assistant Prof. Chenlei Lv](https://aliexken.github.io/),
 Shenzhen University, with assistance from VCCLab and CSSE.
