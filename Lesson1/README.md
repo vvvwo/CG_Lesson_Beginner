@@ -2,7 +2,7 @@
 
 OpenGL实际上只是一个图形程序开发接口标准, 实现是由操作系统和驱动程序来实现的。如果我们希望开发OpenGL程序，需要下载对应的工具库，如freeglut, glut, glfw等，以建立接口带实现的关联。
 
-## 相关库下载
+## 1. 相关库下载
 
 按照Learnopengl的教程，我们基于GLFW和GLAD来开发OpenGL程序。GLFW是配合OpenGL使用的轻量级工具程序库，缩写自 Graphics Library Framework（图形库框架）。GLFW 的主要功能是创建并管理窗口和 OpenGL上下文，同时还提供了处理手柄、键盘、鼠标输入的功能。GLAD代表 OpenGL Loading Library, 是一个轻量级的C/C++库，用于跨平台地加载和管理OpenGL函数指针。它的主要目的是简化在不同操作系统和图形库之间使用OpenGL的过程。由于OpenGL支持的函数和扩展在不同的操作系统和图形库中可能有所不同，因此在编写跨平台OpenGL应用程序时，需要一种方法来加载正确版本的OpenGL函数。这就是GLAD发挥作用的地方。
 
@@ -14,33 +14,39 @@ GLAD: https://glad.dav1d.de/
 
 在Lesson1中，我们提供了已经下载好的版本，方便大家使用。
 
-## 基于VS的环境配置
+## 2. 基于VS的环境配置
 
-本课程面向计算机图形学初学者，以帮助他们尽快了解图形学渲染管线，几何变换，图形接口编程等基础知识。学习该课程最好需要具备C++编程、数据结构、线性代数等前置知识，这会大大提升学习效率。当然，我会尽可能在课程中增加相关概念的解释。
+基于VS2019, 我们实现对OpenGL的配置
 
-针对计算机图形学教学，大部分教材与课程设置，默认以OpenGL作为学习对象，以完成对图形学内容的解释和实践。遵从传统，我们使用OpenGL3.0+作为图形编程接口，以建立教学实验平台。这样一方面能够兼容目前主流的教学案例，另外一方面能够方便初学者了解Shader、体渲染、GPU粒子动画等新特性。包括Vulkan, DirectX等图形接口，在基础架构上是和OpenGL保持一致的。因此掌握OpenGL编程，可以非常平顺的迁移到其他接口平台。一些关于OpenGL配置以及开源库使用的说明可参看如下博客，我也会在课程中做进一步的介绍：
+![20201204174222828](https://github.com/vvvwo/CG_Lesson/assets/65271555/e58267be-c986-4e8d-bd29-47814ff7cedc)
 
- 1. [VS2019+GLFW+GLAD环境配置](https://blog.csdn.net/aliexken/article/details/110656551)
- 2. [VCGLib环境配置](https://blog.csdn.net/aliexken/article/details/119331112)
- 3. [Eigen环境配置](https://blog.csdn.net/aliexken/article/details/125539709)
+包含目录：
 
-## Hello World！
+../glfw-3.3.bin.WIN64/include
 
-根据计算机图形学初级课程的要求，以上机实验为主，课程内容包括：
+../gladinclude
 
- 1. [OpenGL环境配置](https://github.com/vvvwo/CG_Lesson/tree/main/Lesson1)
- 2. [Shader编程入门](https://github.com/vvvwo/CG_Lession/Lession2)
- 3. [键盘与鼠标交互](https://github.com/vvvwo/CG_Lession/Lession3)
- 4. [三维模型读取与显示](https://github.com/vvvwo/CG_Lession/Lession4)
- 5. [三维模型变换](https://github.com/vvvwo/CG_Lession/Lession5)
- 6. [相机定位与投影](https://github.com/vvvwo/CG_Lession/Lession6)
- 7. [光照模型](https://github.com/vvvwo/CG_Lession/Lession7)
- 8. [纹理映射](https://github.com/vvvwo/CG_Lession/Lession8)
- 9. [课程大作业](https://github.com/vvvwo/CG_Lession/Lession9)
+库目录：
 
-该课程参考了[learnopengl-CN](https://learnopengl-cn.github.io/)的部分内容，有兴趣的同学也可以浏览该站点学习OpenGL编程知识。我希望在经过这门课的学习之后，学生可以建立对渲染管线的基本认知，能够利用渲染管线进行基础的图形学编程，能够理解光照模型以及纹理映射的实现原理，能够通过程序设计完成对一个三维模型的数据提取与简单编辑任务。我的主要研究方向是几何处理，犹豫再三，还是把我比较熟悉的网格和点云的处理内容移除了该课程。主要原因是该课程的重点还是围绕对渲染管线的理解来展开的。有兴趣的同学可以follow我即将开设的计算机图形学中级课程，我会介绍更多的相关内容，包括网格点云处理，GPU并行加速以及CG与深度网络技术的融合。
+../glfw-3.3.bin.WIN64/lib-vc2019
 
-## 写在最后
+链接库：
 
-我自2012年开始从事科学研究以来，就专注在CG这个领域。我为CG中那些酷炫的效果和优雅的算法所着迷！我认为CG是计算机应用技术领域最酷炫的研究反向，没有之一。当然，受限于我的个人能力，我对CG的认知与学习依然停留在比较初级的阶段，但这不会影响我对这门学问的喜爱。
-当然，CG的学习路径是辛苦的，需要许多前置知识，学习曲线陡峭。但只要持之以恒，坚持学习，我敢担保你会爱上这门学问。欢迎那些对CG充满热情的学生、研究者以及工程师，加入到CG队伍中，共享CG的魅力！
+glfw3dll.lib
+glfw3.lib
+
+注意，要把glad.c文件添加在你的项目中：
+
+![20201204182125850](https://github.com/vvvwo/CG_Lesson/assets/65271555/a889ad4e-8b7b-4d79-bd1a-3cbcc04a2e89)
+
+DLL链接有两种方法，一种是在环境变量里，将../glfw-3.3.bin.WIN64/lib-vc2019配置Path中，还有一种就是将glfw.dll拷贝到项目根目录文件。为了方便起见，我选择的是第二种：
+
+<img width="216" alt="image" src="https://github.com/vvvwo/CG_Lesson/assets/65271555/1b1b590d-325f-4249-8091-5b736c28da8a">
+
+## 3. Hello World！
+
+运行lesson1.cpp，可以看到如下现实窗口，则OpenGL配置成功：
+
+<img width="470" alt="image" src="https://github.com/vvvwo/CG_Lesson/assets/65271555/d5862aac-8a81-4f6c-88ae-f29804e6e512">
+
+上面的程序仅仅是显示了一个由glfwCreateWindow创建的窗口。在后续的课程中，我们将介绍实例代码的基本信息，以及如何在窗口中实现绘制以及显示。
