@@ -1,9 +1,20 @@
 # OpenGL环境配置
 
-This is a computer graphics course for entry-level learner. Course designed by [Assistant Prof. Chenlei Lv](https://aliexken.github.io/),
-Shenzhen University, with assistance from [VCCLab](https://vcc.tech/index.html) and [CSSE](https://csse.szu.edu.cn/).
+OpenGL实际上只是一个图形程序开发接口标准, 实现是由操作系统和驱动程序来实现的。如果我们希望开发OpenGL程序，需要下载对应的工具库，如freeglut, glut, glfw等，以建立接口带实现的关联。
 
-## 前言
+## 相关库下载
+
+按照Learnopengl的教程，我们基于GLFW和GLAD来开发OpenGL程序。GLFW是配合OpenGL使用的轻量级工具程序库，缩写自 Graphics Library Framework（图形库框架）。GLFW 的主要功能是创建并管理窗口和 OpenGL上下文，同时还提供了处理手柄、键盘、鼠标输入的功能。GLAD代表 OpenGL Loading Library, 是一个轻量级的C/C++库，用于跨平台地加载和管理OpenGL函数指针。它的主要目的是简化在不同操作系统和图形库之间使用OpenGL的过程。由于OpenGL支持的函数和扩展在不同的操作系统和图形库中可能有所不同，因此在编写跨平台OpenGL应用程序时，需要一种方法来加载正确版本的OpenGL函数。这就是GLAD发挥作用的地方。
+
+GLFW和GLAD可以从以下链接处下载：
+
+GLFW: https://www.glfw.org/download.html
+
+GLAD: https://glad.dav1d.de/
+
+在Lesson1中，我们提供了已经下载好的版本，方便大家使用。
+
+## 基于VS的环境配置
 
 本课程面向计算机图形学初学者，以帮助他们尽快了解图形学渲染管线，几何变换，图形接口编程等基础知识。学习该课程最好需要具备C++编程、数据结构、线性代数等前置知识，这会大大提升学习效率。当然，我会尽可能在课程中增加相关概念的解释。
 
@@ -13,7 +24,7 @@ Shenzhen University, with assistance from [VCCLab](https://vcc.tech/index.html) 
  2. [VCGLib环境配置](https://blog.csdn.net/aliexken/article/details/119331112)
  3. [Eigen环境配置](https://blog.csdn.net/aliexken/article/details/125539709)
 
-## 课程内容
+## Hello World！
 
 根据计算机图形学初级课程的要求，以上机实验为主，课程内容包括：
 
