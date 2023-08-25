@@ -7,28 +7,12 @@ Shenzhen University, with assistance from VCCLab and CSSE.
 
 本课程面向计算机图形学初学者，以帮助他们尽快了解图形学渲染管线，几何变换，图形接口编程等基础知识。学习该课程最好需要具备C++编程、数据结构、线性代数等前置知识，这会大大提升学习效率。当然，我会尽可能在课程中增加相关概念的解释。
 
-针对计算机图形学教学，大部分教材与课程设置，默认以OpenGL作为学习对象，以完成对图形学内容的解释和实践。遵从传统，我们使用OpenGL3.0+作为图形编程接口，
+针对计算机图形学教学，大部分教材与课程设置，默认以OpenGL作为学习对象，以完成对图形学内容的解释和实践。遵从传统，我们使用OpenGL3.0+作为图形编程接口，以建立教学实验平台。这样一方面能够兼容目前主流的教学案例，另外一方面能够方便初学者了解Shader、体渲染、GPU粒子动画等新特性。包括Vulkan, DirectX等图形接口，在基础架构上是和OpenGL保持一致的。因此掌握OpenGL能编程，可以非常平顺的迁移到其他接口平台。
 
-In general, the materials in this course assume that students should have
-already taken **Linear Algebra** and **Calculus**.
-
-Students should have already taken **Introduction to Computer Science** and should
-be proficient in computer programming (in any language) and should feel
-comfortable programming in **C++**. 
-
-_All course assignments are conducted in C++, however none rely on nitty gritty
-memory management or complicated object-oriented data-structures._
-
-While knowledge of **Partial Differential Equations** _is not required_, it will
-certainly be very handy for derivations. Similarly, previous experience with
-**Computer Graphics** _is not required_ but recommended.
-
-All coding assignments make use of
-[Eigen](https://en.wikipedia.org/wiki/Eigen_(C%2B%2B_library)), an open-source
-linear algebra library; and [libigl](http://libigl.github.io/libigl/), an
-open-source geometry processing library.  Each assigment is built using
-[CMake](https://en.wikipedia.org/wiki/CMake).
-
+一些关于OpenGL配置以及开源库使用的说明可参看如下博客，我也会在课程中做进一步的介绍：
+1. [VS2019+GLFW+GLAD环境配置](https://blog.csdn.net/aliexken/article/details/110656551)
+2. [VCGLib环境配置](https://blog.csdn.net/aliexken/article/details/119331112)
+3. [Eigen环境配置](https://blog.csdn.net/aliexken/article/details/125539709)
 
 ## Organization
 
