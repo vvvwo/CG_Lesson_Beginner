@@ -16,7 +16,7 @@ GLAD: https://glad.dav1d.de/
 
 ## 2. 基于VS的环境配置
 
-基于VS2019, 我们实现对OpenGL的配置
+基于VS2022, 我们实现对OpenGL的配置
 
 ![20201204174222828](https://github.com/vvvwo/CG_Lesson/assets/65271555/e58267be-c986-4e8d-bd29-47814ff7cedc)
 
