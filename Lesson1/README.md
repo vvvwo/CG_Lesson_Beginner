@@ -12,7 +12,7 @@ GLFW: https://www.glfw.org/download.html
 
 GLAD: https://glad.dav1d.de/
 
-在Lesson1中，我们提供了已经下载好的版本，方便大家使用。
+在课程根目录中，我们提供了已经下载好的版本，方便大家使用。
 
 ## 2. 基于VS的环境配置
 
