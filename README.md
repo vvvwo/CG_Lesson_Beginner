@@ -18,14 +18,14 @@ Shenzhen University, with assistance from [VCCLab](https://vcc.tech/index.html) 
 根据计算机图形学初级课程的要求，以上机实验为主，课程内容包括：
 
  1. [OpenGL环境配置](https://github.com/vvvwo/CG_Lesson/tree/main/Lesson1)
- 2. [Shader编程入门](https://github.com/vvvwo/CG_Lession/Lession2)
- 3. [键盘与鼠标交互](https://github.com/vvvwo/CG_Lession/Lession3)
- 4. [三维模型读取与显示](https://github.com/vvvwo/CG_Lession/Lession4)
- 5. [三维模型变换](https://github.com/vvvwo/CG_Lession/Lession5)
- 6. [相机定位与投影](https://github.com/vvvwo/CG_Lession/Lession6)
- 7. [光照模型](https://github.com/vvvwo/CG_Lession/Lession7)
- 8. [纹理映射](https://github.com/vvvwo/CG_Lession/Lession8)
- 9. [课程大作业](https://github.com/vvvwo/CG_Lession/Lession9)
+ 2. [Shader编程入门]()
+ 3. [键盘与鼠标交互]()
+ 4. [三维模型读取与显示]()
+ 5. [三维模型变换]()
+ 6. [相机定位与投影]()
+ 7. [光照模型]()
+ 8. [纹理映射]()
+ 9. [课程大作业]()
 
 该课程参考了[learnopengl-CN](https://learnopengl-cn.github.io/)的部分内容，有兴趣的同学也可以浏览该站点学习OpenGL编程知识。我希望在经过这门课的学习之后，学生可以建立对渲染管线的基本认知，能够利用渲染管线进行基础的图形学编程，能够理解光照模型以及纹理映射的实现原理，能够通过程序设计完成对一个三维模型的数据提取与简单编辑任务。我的主要研究方向是几何处理，犹豫再三，还是把我比较熟悉的网格和点云的处理内容移除了该课程。主要原因是该课程的重点还是围绕对渲染管线的理解来展开的。有兴趣的同学可以follow我即将开设的计算机图形学中级课程，我会介绍更多的相关内容，包括网格点云处理，GPU并行加速以及CG与深度网络技术的融合。
 
