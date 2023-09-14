@@ -6,11 +6,13 @@ OpenGL实际上只是一个图形程序开发接口标准, 实现是由操作系
 
 按照Learnopengl的教程，我们基于GLFW和GLAD来开发OpenGL程序。GLFW是配合OpenGL使用的轻量级工具程序库，缩写自 Graphics Library Framework（图形库框架）。GLFW 的主要功能是创建并管理窗口和 OpenGL上下文，同时还提供了处理手柄、键盘、鼠标输入的功能。GLAD代表 OpenGL Loading Library, 是一个轻量级的C/C++库，用于跨平台地加载和管理OpenGL函数指针。它的主要目的是简化在不同操作系统和图形库之间使用OpenGL的过程。由于OpenGL支持的函数和扩展在不同的操作系统和图形库中可能有所不同，因此在编写跨平台OpenGL应用程序时，需要一种方法来加载正确版本的OpenGL函数。这就是GLAD发挥作用的地方。
 
-GLFW和GLAD可以从以下链接处下载：
+GLFW, GLAD和GLM可以从以下链接处下载：
 
 GLFW: https://www.glfw.org/download.html
 
 GLAD: https://glad.dav1d.de/
+
+GLM: https://github.com/g-truc/glm
 
 在课程根目录中，我们提供了已经下载好的版本，方便大家使用。
 
@@ -24,7 +26,9 @@ GLAD: https://glad.dav1d.de/
 
 ../glfw-3.3.bin.WIN64/include
 
-../gladinclude
+../glad/include
+
+../glm
 
 库目录：
 
