@@ -54,3 +54,24 @@ DLL链接有两种方法，一种是在环境变量里，将../glfw-3.3.bin.WIN6
 <img width="470" alt="image" src="https://github.com/vvvwo/CG_Lesson/assets/65271555/d5862aac-8a81-4f6c-88ae-f29804e6e512">
 
 上面的程序仅仅是显示了一个由glfwCreateWindow创建的窗口。在后续的课程中，我们将介绍实例代码的基本信息，以及如何在窗口中实现绘制以及显示。
+
+## 4. 作业1的扩展说明
+
+当我们把所有的环境都配置好后，可以使用task1中的文件，尝试下shader配置，并绘制一个三角形。
+
+首先，我们将task1中的include和shader文件夹，拷贝到工程目录中（和.vcxproj文件同目录，加下图）
+
+<img width="675" alt="image" src="https://github.com/vvvwo/CG_Lesson/assets/65271555/e7e29fdd-ae96-4096-aeb5-8b457c7d3aa9">
+
+之后在工程文件项目属性页的包含目录中添加task1中的include路径（这里我用的是相对路径）：
+
+<img width="672" alt="image" src="https://github.com/vvvwo/CG_Lesson/assets/65271555/c53794fa-6958-40ed-a675-e3383b79c6da">
+
+然后把InitShader.cpp添加到项目的源文件中。全部配置好后，执行main.cpp，绘制完成：
+
+<img width="623" alt="image" src="https://github.com/vvvwo/CG_Lesson/assets/65271555/1f1d1a06-ddea-4d37-95dd-22123e16422c">
+
+
+
+
+
