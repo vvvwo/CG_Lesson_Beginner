@@ -10,8 +10,7 @@ OpenGL通过回调捕获来处理交互，即当每一帧被绘制完后，渲�
 
 与固定渲染管线相比，可编程渲染管线支持向GPU直接传递参数，以修改渲染流水线。这里通常是由着色器变量Uniform（全局的）执行数据传输。回想一下我们在Lesson2中介绍的案例，如果我们希望将鼠标移动产生的位移数据，作为控制摄像头的一个参数，那么我们需要将这个参数传入顶点着色器，以改变绘制的角度。着色器代码如下：
 
-<pre class="prettyprint"><code class=" hljs xml">
-#version 330 core 
+<pre class="prettyprint"><code class=" hljs xml">#version 330 core 
 layout (location = 0) in vec3 position;
 uniform vec2 translation;
     
@@ -22,35 +21,155 @@ void main()
                        position.z, 1.0);
 }</code></pre>
 
-这里的uniform变量translation实际接收了回调函数传入的鼠标位移，以传入到顶点着色器，进而改变了顶点的坐标信息。
+这里的uniform变量translation实际接收了回调函数传入的鼠标位移，以传入到顶点着色器，进而改变了顶点的坐标信息。同样的道理，我们当然可以向片段着色器传入对应参数，来直接改变像素信息。
+在应用端或IDE界面，对translation变量的数据传递代码如下：
+<pre class="prettyprint"><code class=" hljs xml">int vertexLocation = glGetUniformLocation(shaderProgram,"translation"); 
+glUseProgram(shaderProgram); 
+glUniform2f(vertexLocation , 0.0f, 1.0f);</code></pre>
+
+我们需要在应用端定义一个指向“translation”的ID，即vertexLocation，然后通过glUniform2f向其传入数据。
+这里我们放一个鼠标单击的回调函数实例，当点击后，会传入点击位置的二维坐标，如果将对应的坐标通过glUniform2f替换（0.0f, 1.0f），那么就实现了从鼠标点击数据到顶点着色器传输的一个完整的交互过程。
+
+<pre class="prettyprint"><code class=" hljs xml">void mouseClick_callback(GLFWwindow* window, int button, int action, int mods)
+{
+    double winX, winY;
+    glfwGetCursorPos(window, &winX, &winY);
+    
+    if ((action == GLFW_PRESS) && (button == GLFW_MOUSE_BUTTON_LEFT))
+    {
+        x_move = winX;
+        y_move = winY;        
+    }    
+}</code></pre>
 
 
 ## 2. 交互的种类
 
-如果你是从OpenGL红宝书到Nehe来开始学习的OpenGL，并且在LearnOpenGL课程体系中配置过相关代码，那么我相信你会对shader有更深入的了解。简而言之，shader就是帮助我们与GPU沟通的机制。在没有shader之前，我们的渲染过程是非常低效的，即要把所有需要绘制的数据，在内存做好计算，然后打包给GPU。这样在内存与显存之间就会发生频繁的数据交互，大大降低了对大规模数据的处理效率。不过这个过程也有一个好处，就是在应用端的代码是比较容易理解的。基于shader的OpenGL实现逻辑就完全不同了。内存上的数据会按照其属性和长度，做好严格的声明和标注后，提前传输到显存中。shader提供了一个模板形式的C代码理解机制，可以预先定义相关程序，以通过GPU如何执行诸如矩阵变换和光照渲染等计算。这个过程是在GPU上完成的，这显然比传统的实现要高效。但同时，由于这里涉及到应用端对GPU渲染过程的控制以及数据的交互，这使得相关代码要比传统固定渲染管线的代码要难懂。
+考虑到鼠标与键盘的各种操作，OpenGL提供了非常丰富的回调函数，这里我们列出Lesson2的实例需要的几个回调函数：
+
+<pre class="prettyprint"><code class=" hljs xml">void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+void processInput(GLFWwindow* window);</code></pre>
+
+### 1）framebuffer_size_callback
+
+用来处理窗口变化；
+
+### 2）mouse_callback
+
+用来处理鼠标的移动；
+
+### 3）mouse_button_callback
+
+用来处理鼠标点击事件，包括触发的是左或右键，以及对应的动作。因为这个回调函数的使用频率较多，我把对应的参数都列出来，以方便查看。
+参数包括：int button, int action, int mods
+
+#### button: 被操作的鼠标按钮，可能的值为：
+
+GLFW_MOUSE_BUTTON_1 (左键)
+
+GLFW_MOUSE_BUTTON_2 (右键)
+
+GLFW_MOUSE_BUTTON_3 (中键)
+
+GLFW_MOUSE_BUTTON_4 及以上（额外鼠标按钮）
+
+#### action: 表示事件类型，可能的值为：
+
+GLFW_PRESS（按钮被按下）
+
+GLFW_RELEASE（按钮被释放）
+
+#### mods: 表示修改键的状态：
+
+如 GLFW_MOD_SHIFT、GLFW_MOD_CONTROL 等，指示同时按下的修饰键
+
+### 4）scroll_callback
+
+用来处理鼠标滚轮事件；
+
+### 5）processInput
+
+用来检查键盘输入，配合glfwGetKey函数以检查什么按键被敲击，以及对应的操作是什么；
+
+注意，上述回调函数是按照种类做的划分，其命名是可以自由指定的。当我们需要opengl知道我们设置的回调对应哪一种操作事件，我们需要使用特定的语句进行链接，如下：
+
+ <pre class="prettyprint"><code class=" hljs xml">glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+ glfwSetCursorPosCallback(window, mouse_callback);
+ glfwSetScrollCallback(window, scroll_callback);
+ glfwSetMouseButtonCallback(window, mouse_button_callback);</code></pre>
 
 ## 3. 程序实例
 
-我们已经提到，shader是联系GPU的一种机制。shader的实现即为了建立CPU与GPU，显存与内存的联系。因此，我们在看shader时，应该考虑这种联系，以理解相关实现的逻辑。
+这里我们介绍一个使用鼠标控制摄像头的实例：
 
-### VAO和VBO (该部分摘录自LearnOpenGL)
+<pre class="prettyprint"><code class=" hljs xml">void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
+{
+    float xpos = static_cast<float>(xposIn);
+    float ypos = static_cast<float>(yposIn);
 
-顶点缓冲对象(Vertex Buffer Objects, VBO)和顶点数组对象(Vertex Array Object, VAO)就是shader用于在应用端传递使用显存数据的两个重要对象。 VBO对应了显存的一组顶点数据，对应一个独立的ID：
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
 
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
 
-按照参数，指定了输入的vertices中哪些是位置，哪些是纹理等。
+    lastX = xpos;
+    lastY = ypos;
 
-顶点数组对象(Vertex Array Object, VAO)可以像顶点缓冲对象那样被绑定，任何随后的顶点属性调用都会储存在这个VAO中。这里我的理解是，如果你有很多的VBO对象，你希望一部分用渲染管线1，一部分用2。如果你缺少打包的工具，这个过程就会很乱。VAO帮助你进行打包，以更好的绘制VBO群组。当你绘制时，只要启用VAO对象就可以对应绘制被其绑定的VBO数据。以下是一个完整的绑定。
+    camera.ProcessMouseMovement(xoffset, yoffset);
+}</code></pre>
 
-<pre class="prettyprint"><code class=" hljs xml">unsigned int VBO, VAO;
-glGenVertexArrays(1, &VAO);
-glGenBuffers(1, &VBO);
-glBindVertexArray(VAO);
+这里我们使用mouse_callback回调函数传出一个鼠标的位移（xoffset, yoffset），通过camera.ProcessMouseMovement传出到应用端。
 
-// 2. 把顶点数组复制到缓冲中供OpenGL使用
-glBindBuffer(GL_ARRAY_BUFFER, VBO);
-glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-// 3. 设置顶点属性指针
-glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-glEnableVertexAttribArray(0);</code></pre>  
+在应用端，camera.ProcessMouseMovement函数对应一个摄像头类。该类直接将这组参数传入到该类中，并转换为角度：
 
+<pre class="prettyprint"><code class=" hljs xml">void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true)
+{
+    xoffset *= MouseSensitivity;
+    yoffset *= MouseSensitivity;
+
+    Yaw += xoffset;
+    Pitch += yoffset;
+
+    // make sure that when pitch is out of bounds, screen doesn't get flipped
+    if (constrainPitch)
+    {
+        if (Pitch > 89.0f)
+            Pitch = 89.0f;
+        if (Pitch < -89.0f)
+            Pitch = -89.0f;
+    }
+
+    // update Front, Right and Up Vectors using the updated Euler angles
+    updateCameraVectors();
+}</code></pre>
+
+此时，摄像头类的角度已经根据鼠标传入的数据产生改变，对应的摄像机局部坐标系统将被更新：
+
+<pre class="prettyprint"><code class=" hljs xml">void updateCameraVectors()
+{
+    // calculate the new Front vector
+    glm::vec3 front;
+    front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
+    front.y = sin(glm::radians(Pitch));
+    front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
+    Front = glm::normalize(front);
+    // also re-calculate the Right and Up vector
+    Right = glm::normalize(glm::cross(Front, WorldUp));  // normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
+    Up = glm::normalize(glm::cross(Right, Front));
+}</code></pre>
+
+当我们更新了Front，Right和Up三个摄像机方向向量，就能够驱动opengl实现观察矩阵更新：
+
+<pre class="prettyprint"><code class=" hljs xml">glm::mat4 view = camera.GetViewMatrix(); 
+ourShader.setMat4("view", view);</code></pre>
+
+其中 camera.GetViewMatrix()传入的mat4，就是通过glm::lookAt函数建立的摄像机局部坐标。
+        
