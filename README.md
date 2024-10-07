@@ -21,7 +21,7 @@ Shenzhen University, with assistance from [VCCLab](https://vcc.tech/index.html) 
 
  1. [OpenGL环境配置](https://github.com/vvvwo/CG_Lesson/tree/main/Lesson1)
  2. [Shader编程入门](https://github.com/vvvwo/CG_Lesson/tree/main/Lesson2)
- 3. [键盘与鼠标交互]()
+ 3. [键盘与鼠标交互](https://github.com/vvvwo/CG_Lesson/tree/main/Lesson3)
  4. [三维模型读取与显示]()
  5. [三维模型变换]()
  6. [相机定位与投影]()
