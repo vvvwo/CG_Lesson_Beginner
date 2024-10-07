@@ -172,4 +172,9 @@ GLFW_RELEASE（按钮被释放）
 ourShader.setMat4("view", view);</code></pre>
 
 其中 camera.GetViewMatrix()传入的mat4，就是通过glm::lookAt函数建立的摄像机局部坐标。
-        
+
+实例如下：
+
+![image](https://github.com/user-attachments/assets/14217d50-9fdd-49c5-a059-58b2882fa9de)![image](https://github.com/user-attachments/assets/09128dfb-48f0-432e-8181-015e7131e14a)![image](https://github.com/user-attachments/assets/05be058a-bd69-4b28-bebe-3fb781b188eb)
+
+可以参考本次课程的内容，结合https://learnopengl-cn.github.io/01%20Getting%20started/09%20Camera/#_7的样例代码，尝试实现一个鼠标交互。       
