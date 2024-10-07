@@ -6,7 +6,7 @@
 
 OpenGL通过回调捕获来处理交互，即当每一帧被绘制完后，渲染管线向回调函数传入相关参数，以实现交互响应，流程图如下：
 
-![image](https://github.com/user-attachments/assets/20b85aa1-5b15-489a-a78b-9ca71081f361)
+<img width="400" alt="屏幕截图 2024-09-06 165624" src="https://github.com/user-attachments/assets/20b85aa1-5b15-489a-a78b-9ca71081f361">
 
 与固定渲染管线相比，可编程渲染管线支持向GPU直接传递参数，以修改渲染流水线。这里通常是由着色器变量Uniform（全局的）执行数据传输。回想一下我们在Lesson2中介绍的案例，如果我们希望将鼠标移动产生的位移数据，作为控制摄像头的一个参数，那么我们需要将这个参数传入顶点着色器，以改变绘制的角度。着色器代码如下：
 
@@ -175,6 +175,9 @@ ourShader.setMat4("view", view);</code></pre>
 
 实例如下：
 
-![image](https://github.com/user-attachments/assets/14217d50-9fdd-49c5-a059-58b2882fa9de)![image](https://github.com/user-attachments/assets/09128dfb-48f0-432e-8181-015e7131e14a)![image](https://github.com/user-attachments/assets/05be058a-bd69-4b28-bebe-3fb781b188eb)
+<img width="300" height="200" alt="屏幕截图 2024-09-06 165624" src="https://github.com/user-attachments/assets/14217d50-9fdd-49c5-a059-58b2882fa9de">
+<img width="300" height="200" alt="屏幕截图 2024-09-06 165624" src="https://github.com/user-attachments/assets/05be058a-bd69-4b28-bebe-3fb781b188eb">
+<img width="300" height="200" alt="屏幕截图 2024-09-06 165624" src="https://github.com/user-attachments/assets/09128dfb-48f0-432e-8181-015e7131e14a">
 
-可以参考本次课程的内容，结合https://learnopengl-cn.github.io/01%20Getting%20started/09%20Camera/#_7的样例代码，尝试实现一个鼠标交互。       
+可以参考本次课程的内容，结合https://learnopengl-cn.github.io/01%20Getting%20started/09%20Camera/#_7
+的样例代码，尝试实现一个简单的鼠标交互Demo。       
