@@ -72,7 +72,7 @@ vertices.size()/3的意思是三角面片的数量，正好是顶点数量的1/3
 
 <img height = "300" alt="fig1" src="https://github.com/user-attachments/assets/88c0190a-2751-4b5c-b50d-fe1169ce6254">
 
-如果我们使用线绘制模型，就能够画出一个线框效果的三维模型。我把整个项目，连带VCG库上传到这里，供大家参考。
+如果我们使用线绘制模型，就能够画出一个线框效果的三维模型。我把整个VS项目（ProjCode），连带VCG库上传到这里，供大家参考。你仅需要替换对应的glfw和glad路径就可以运行。或者，你可以参考我的源代码，在你子集的程序上直接编写模型载入和显示程序就可以。
 
 <pre class="prettyprint"><code class=" hljs xml">glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 </code></pre>
