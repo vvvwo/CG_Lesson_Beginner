@@ -70,14 +70,14 @@ glDrawArrays(GL_TRIANGLES, 0, vertices.size()/3);
 
 vertices.size()/3的意思是三角面片的数量，正好是顶点数量的1/3。我们载入一个实验模型，渲染的效果如下：
 
-<img height = "600" alt="fig1" src="https://github.com/user-attachments/assets/88c0190a-2751-4b5c-b50d-fe1169ce6254">
+<img height = "300" alt="fig1" src="https://github.com/user-attachments/assets/88c0190a-2751-4b5c-b50d-fe1169ce6254">
 
 如果我们使用线绘制模型，就能够画出一个线框效果的三维模型。我把整个项目，连带VCG库上传到这里，供大家参考。
 
 <pre class="prettyprint"><code class=" hljs xml">glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 </code></pre>
 
-<img height = "600" alt="fig1" src="https://github.com/user-attachments/assets/76dd2063-6821-48f2-8f77-c43a9f4d8651">
+<img height = "300" alt="fig1" src="https://github.com/user-attachments/assets/76dd2063-6821-48f2-8f77-c43a9f4d8651">
 
 可能你会说，这个模型不能看出三维效果！原因很简单，我们还没有使用光照信息，不用急，这部分内容我们很快就会讲到。
 
